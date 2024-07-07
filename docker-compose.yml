@@ -1,0 +1,7 @@
+version: "3.8"
+services:
+  ruby_container:
+    build: .
+    volumes:
+      - .:/craig_scrape
+    image: ruby_3.3_container:latest
