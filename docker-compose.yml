@@ -3,5 +3,5 @@ services:
   ruby_container:
     build: .
     volumes:
-      - .:/craig_scrape
-    image: ruby_3.3_container:latest
+      - .:/craigs_scrape
+    image: craigs_scrape:latest
