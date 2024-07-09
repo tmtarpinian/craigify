@@ -27,7 +27,8 @@ module Craigslist
 
         title_element = result.at_css('.title')
         title = title_element.text.strip
-        next unless notification_generator.search_keywords.any? { |keyword| title.include?(keyword) }
+        keyword = notification_generator.search_keywords.find { |keyword| title.include?(keyword) }
+        next unless keyword
         
         results << {
           title: title,
@@ -36,6 +37,7 @@ module Craigslist
           location: format_location(result),
           price: format_price(result),
           pid: format_pid(result),
+          keyword: keyword
         }
       end
       # results.each { |result| puts result }

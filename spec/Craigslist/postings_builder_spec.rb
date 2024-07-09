@@ -50,7 +50,8 @@ RSpec.describe Craigslist::PostingsBuilder do
         url: 'https://detroit.craigslist.org/lbg/d/handyman/123456.html',
         location: 'Detroit',
         price: '$10',
-        pid: '123456'
+        pid: '123456',
+        keyword: 'handyman'
       }])
     end
   end
