@@ -6,3 +6,5 @@ SITE_SECTIONS = {
   LABOR_GIGS: "lbg",
   BEAUTY_AND_HEALTH: "haa"
 }
+
+NOTIFICATION_TYPES = ['email', 'text']
