@@ -15,8 +15,8 @@ yarn && rm -rf /var/lib/apt/lists/*
 RUN curl -sL https://deb.nodesource.com/setup_14.x | bash - && apt-get install -y nodejs
 
 # create a folder /scraper in the docker container and set as the working directory
-RUN mkdir /craiglist_scraper
-WORKDIR /craiglist_scraper
+# RUN mkdir /craiglist_scraper
+WORKDIR /craigs_scrape
 
 # Get some basic bash aliases set
 RUN touch $HOME/.bashrc
@@ -28,18 +28,14 @@ RUN echo "alias ll='ls -alF'" >> $HOME/.bashrc && \
   echo "alias c='clear'" >> $HOME/.bashrc
 
 # Copy the Gemfile from app root directory into the /scraper/ folder in the docker container
-COPY Gemfile ./
+COPY . .
 
 # Run bundle install to install gems inside the gemfile
-# RUN bundle install --verbose
+RUN bundle install --verbose
 
 RUN bundle install --path vendor/bundle
 
-
-# Copy the rest of your app's source code from your host to your image filesystem.
-COPY scrape.rb ./
-
-# Copy the whole app
-RUN zip -r scrape.zip scrape.rb Gemfile Gemfile.lock vendor
-
-ENTRYPOINT ["tail", "-f", "/dev/null"]
+# execute startup script, which zips source code
+COPY startup.sh /startup.sh
+RUN chmod +x /startup.sh
+ENTRYPOINT ["/startup.sh"]
