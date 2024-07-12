@@ -27,7 +27,7 @@ module Craigslist
 
         title_element = result.at_css('.title')
         title = title_element.text.strip
-        keyword = notification_generator.search_keywords.find { |keyword| title.include?(keyword) }
+        keyword = notification_generator.search_keywords.find { |keyword| title.downcase.include?(keyword.downcase) }
         next unless keyword
         
         results << {
