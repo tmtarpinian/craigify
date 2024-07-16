@@ -25,13 +25,14 @@ RSpec.describe Craigslist::PostingsBuilder do
     let(:html) { File.read(File.join(File.dirname(__FILE__), 'labor_gigs_mock_response.html')) }
     let(:notification_generator) { Craigslist::NotificationGenerator.new({ city: 'DETROIT', site_section: site_section, notification_type: 'email', search_keywords: ['handy'] }) }
     let(:notification_generator_2) { Craigslist::NotificationGenerator.new({ city: 'DETROIT', site_section: site_section, notification_type: 'email', search_keywords: ['paint'] }) }
+    let(:current_date) { Time.now.strftime('%m-%d-%Y') }
 
     it 'returns an array of postings' do
       postings_builder = described_class.new(notification_generator, html)
       expect(postings_builder.parse_postings_in_html).to eq(
         [
           {
-            :date=>"07-14-2024",
+            :date=> current_date,
             :keyword=>"handy",
             :location=>"Tireman",
             :pid=>"7762543982",
@@ -40,7 +41,7 @@ RSpec.describe Craigslist::PostingsBuilder do
             :url=>"https://detroit.craigslist.org/wyn/lbg/d/detroit-looking-to-hire-handyman-as/7762543982.html"
           },
           {
-            :date=>"07-14-2024",
+            :date=> current_date,
             :keyword=>"handy",
             :location=>"Eastpointe",
             :pid=>"7760206604",
@@ -49,7 +50,7 @@ RSpec.describe Craigslist::PostingsBuilder do
             :url=>"https://detroit.craigslist.org/mcb/lbg/d/eastpointe-looking-for-handyman/7760206604.html"
           },
           {
-            :date=>"07-14-2024",
+            :date=> current_date,
             :keyword=>"handy",
             :location=>"Eastside",
             :pid=>"7759586911",
@@ -58,7 +59,7 @@ RSpec.describe Craigslist::PostingsBuilder do
             :url=>"https://detroit.craigslist.org/wyn/lbg/d/fraser-handyman-wanted/7759586911.html"
           },
           {
-            :date=>"07-14-2024",
+            :date=> current_date,
             :keyword=>"handy",
             :location=>"macomb county",
             :pid=>"7756245124",
@@ -72,7 +73,7 @@ RSpec.describe Craigslist::PostingsBuilder do
       expect(postings_builder.parse_postings_in_html).to eq(
       [
         {
-          :date=>"07-14-2024",
+          :date=> current_date,
           :keyword=>"paint",
           :location=>"Detroit",
           :pid=>"7761740004",
@@ -81,7 +82,7 @@ RSpec.describe Craigslist::PostingsBuilder do
           :url=> "https://detroit.craigslist.org/wyn/lbg/d/detroit-painter/7761740004.html"
         },
         {
-          :date=>"07-14-2024",
+          :date=> current_date,
           :keyword=>"paint",
           :location=>"Royal Oak",
           :pid=>"7758606428",
@@ -90,7 +91,7 @@ RSpec.describe Craigslist::PostingsBuilder do
           :url=> "https://detroit.craigslist.org/okl/lbg/d/royal-oak-need-painter-and-lawn-care/7758606428.html"
         },
         {
-          :date=>"07-14-2024",
+          :date=> current_date,
           :keyword=>"paint",
           :location=>"Macomb County",
           :pid=>"7758435698",
@@ -99,7 +100,7 @@ RSpec.describe Craigslist::PostingsBuilder do
           :url=> "https://detroit.craigslist.org/mcb/lbg/d/harrison-township-full-time-painter/7758435698.html"
         },
         {
-          :date=>"07-14-2024",
+          :date=> current_date,
           :keyword=>"paint",
           :location=>"Detroit",
           :pid=>"7758361566",
@@ -108,7 +109,7 @@ RSpec.describe Craigslist::PostingsBuilder do
           :url=> "https://detroit.craigslist.org/wyn/lbg/d/detroit-law-services-gutters-and-paint/7758361566.html"
         },
         {
-          :date=>"07-14-2024",
+          :date=> current_date,
           :keyword=>"paint",
           :location=>"Oakland County",
           :pid=>"7758098814",
@@ -117,7 +118,7 @@ RSpec.describe Craigslist::PostingsBuilder do
           :price=>"$0",
           :url=>"https://detroit.craigslist.org/okl/lbg/d/royal-oak-hiring-skilled-painters/7758098814.html"},
         {
-          :date=>"07-14-2024",
+          :date=> current_date,
           :keyword=>"paint",
           :location=>"Pontiac",
           :pid=>"7757978521",

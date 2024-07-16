@@ -19,7 +19,7 @@ RSpec.configure do |config|
   # assertions if you prefer.
 
   # Require all Ruby files in the Craigslist directory and its subdirectories
-  Dir[File.join(__dir__, '../lib/craigslist/*.rb')].each do |file|
+  Dir[File.join(__dir__, '../lib/Craigslist/*.rb')].each do |file|
     require_relative file
   end
 
