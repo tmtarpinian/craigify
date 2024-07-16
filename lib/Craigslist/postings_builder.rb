@@ -14,7 +14,6 @@ module Craigslist
     end
 
     private
-    
 
     def parse_craigslist_page(html)
       doc = Nokogiri::HTML(html)
@@ -40,7 +39,6 @@ module Craigslist
           keyword: keyword
         }
       end
-      # results.each { |result| puts result }
       results
     end
 

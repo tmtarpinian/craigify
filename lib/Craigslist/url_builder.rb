@@ -1,6 +1,6 @@
 module Craigslist
   class UrlBuilder
-    attr_reader :url, :query_value
+    attr_reader :url
     def initialize(city:, site_section:, query_value: nil)
       @url = build(city, site_section, query_value)
     end
